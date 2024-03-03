@@ -22,6 +22,9 @@
                      success: "#10B981",
                      warning: "#FF3434",
                   },
+                  borderRadius: {
+                     "4xl": "2rem",
+                  },
                },
             },
          };
@@ -98,5 +101,68 @@
             </div>
          </section>
       </header>
+
+      <main class="px-5 lg:px-0 mx-auto container grid gap-y-16 lg:gap-y-28">
+         <!-- Hero Section -->
+         <section
+            class="mt-4 lg:mt-0 p-8 lg:px-24 lg:py-28 bg-darkGray rounded-3xl lg:rounded-4xl text-white bg-[url('images/BannerBG.svg')] bg-no-repeat bg-bottom bg-cover lg:bg-contain lg:flex lg:justify-between"
+         >
+            <div>
+               <h1
+                  class="font-extrabold lg:font-black text-center lg:text-left text-4xl lg:text-6xl"
+               >
+                  Welcome to the
+                  <span
+                     class="block bg-gradient-to-r from-indigo-500 to-indigo-500/50 bg-clip-text text-transparent"
+                  >
+                     IdeaForum
+                  </span>
+               </h1>
+
+               <p
+                  class="mt-3 lg:mt-8 text-gray-400 text-center lg:text-left lg:text-xl"
+               >
+                  Share your favorite opinion and win and wp forum coffee mug!
+               </p>
+
+               <div class="mt-6 lg:mt-12 relative">
+                  <input
+                     type="text"
+                     name="search-category"
+                     id="search"
+                     placeholder="Search by category"
+                     autocomplete="off"
+                     class="h-12 lg:h-16 w-full px-4 lg:px-5 rounded-full text-black"
+                  />
+                  <button
+                     class="px-5 py-2 lg:px-8 lg:py-3 absolute right-1 lg:right-2 top-1/2 -translate-y-1/2 bg-primary rounded-full active:scale-95 transition-all"
+                  >
+                     Search
+                  </button>
+               </div>
+            </div>
+
+            <div
+               class="mt-6 p-6 lg:p-12 max-w-96 bg-white rounded-3xl text-neutral-600 grid gap-y-2 lg:gap-y-6 shrink-0 w-full self-center"
+            >
+               <div class="flex items-center justify-between">
+                  <span>Registered Users</span>
+                  <span>01</span>
+               </div>
+               <div class="flex items-center justify-between">
+                  <span>Forum</span>
+                  <span>05</span>
+               </div>
+               <div class="flex items-center justify-between">
+                  <span>Topics</span>
+                  <span>01</span>
+               </div>
+               <div class="flex items-center justify-between">
+                  <span>Replies</span>
+                  <span>01</span>
+               </div>
+            </div>
+         </section>
+      </main>
    </body>
 </html>
