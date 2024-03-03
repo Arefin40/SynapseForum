@@ -29,8 +29,20 @@
             },
          };
       </script>
+
+      <!-- <style>
+         .article {
+            grid-template-columns: 4.5rem 1fr;
+            grid-template-areas:
+               "author metadata"
+               "author title"
+               ". description"
+               ". divider"
+               ". stats";
+         }
+      </style> -->
    </head>
-   <body>
+   <body class="text-darkGray">
       <!-- Header Section -->
       <header class="py-3 lg:py-12 border-b lg:border-0">
          <section
@@ -143,7 +155,7 @@
             </div>
 
             <div
-               class="mt-6 p-6 lg:p-12 max-w-96 bg-white rounded-3xl text-neutral-500 grid gap-y-2 lg:gap-y-6 shrink-0 w-full self-center font-medium"
+               class="mt-6 p-6 lg:p-12 max-w-96 bg-white rounded-3xl text-gray-500 grid gap-y-2 lg:gap-y-6 shrink-0 w-full self-center font-medium"
             >
                <div class="flex items-center justify-between">
                   <span>Registered Users</span>
@@ -162,6 +174,277 @@
                   <span>01</span>
                </div>
             </div>
+         </section>
+
+         <!-- Discuss Section -->
+         <section>
+            <div class="mb-6 lg:mb-12 text-center grid gap-y-2 lg:gap-y-6">
+               <h1 class="text-2xl lg:text-4xl font-black">Let's Discuss</h1>
+               <p class="text-gray-500 lg:text-lg max-w-screen-sm mx-auto">
+                  Yes, you can run unit tests and view the results directly
+                  within the app. The integrated testing features allow for a
+                  streamlined.
+               </p>
+            </div>
+
+            <section class="grid gap-6 lg:grid-cols-12">
+               <main id="articles" class="lg:col-span-8 grid gap-y-6">
+                  <article
+                     class="p-6 lg:p-10 grid bg-gray-100 rounded-3xl text-gray-500"
+                  >
+                     <header
+                        class="grid grid-cols-[4rem_1fr] lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6"
+                     >
+                        <div
+                           class="w-full aspect-square border shrink-0 overflow-hidden rounded-2xl"
+                        >
+                           <img
+                              src="images/AI Generated Man.jpg"
+                              class="w-full h-full"
+                           />
+                        </div>
+
+                        <div class="grid">
+                           <div
+                              class="flex items-center gap-x-5 text-sm font-medium text-gray-600"
+                           >
+                              <p># Music</p>
+                              <p>Author: Awlad Hossain</p>
+                           </div>
+                           <h2 class="mt-1 font-bold lg:text-xl text-darkGray">
+                              10 Kids Unaware of Their Halloween Costume
+                           </h2>
+                        </div>
+                     </header>
+
+                     <main
+                        class="grid lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6"
+                     >
+                        <span></span>
+
+                        <div class="grid">
+                           <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 596 2"
+                              class="py-3 lg:py-6 order-2 lg:order-3 w-full"
+                           >
+                              <path
+                                 stroke="#12132D"
+                                 stroke-width="1"
+                                 stroke-dasharray="5 5"
+                                 stroke-opacity="0.3"
+                                 d="M0 .5h596"
+                              />
+                           </svg>
+
+                           <p class="lg:pr-6 order-3 lg:order-2">
+                              It's one thing to subject yourself to a Halloween
+                              costume mishap because, hey that's your
+                              prerogative.
+                           </p>
+
+                           <div
+                              class="mt-6 lg:mt-0 flex items-center justify-between order-4"
+                           >
+                              <ul
+                                 class="flex gap-x-6 items-center text-sm sm:text-base"
+                              >
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Message.svg"
+                                       alt="Message"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>560</span>
+                                 </li>
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Eye.svg"
+                                       alt="Eye"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>1,568</span>
+                                 </li>
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Clock.svg"
+                                       alt="Clock"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>5 min</span>
+                                 </li>
+                              </ul>
+
+                              <button>
+                                 <img
+                                    src="images/Email.svg"
+                                    alt="Email"
+                                    class="w-6 h-6 lg:w-8 lg:h-8"
+                                 />
+                              </button>
+                           </div>
+                        </div>
+                     </main>
+                  </article>
+
+                  <article
+                     class="p-6 lg:p-10 grid bg-gray-100 rounded-3xl text-gray-500"
+                  >
+                     <header
+                        class="grid grid-cols-[4rem_1fr] lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6"
+                     >
+                        <div
+                           class="w-full aspect-square border shrink-0 overflow-hidden rounded-2xl"
+                        >
+                           <img
+                              src="images/AI Generated Man.jpg"
+                              class="w-full h-full"
+                           />
+                        </div>
+
+                        <div class="grid">
+                           <div
+                              class="flex items-center gap-x-5 text-sm font-medium text-gray-600"
+                           >
+                              <p># Music</p>
+                              <p>Author: Awlad Hossain</p>
+                           </div>
+                           <h2 class="mt-1 font-bold lg:text-xl text-darkGray">
+                              10 Kids Unaware of Their Halloween Costume
+                           </h2>
+                        </div>
+                     </header>
+
+                     <main
+                        class="grid lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6"
+                     >
+                        <span></span>
+
+                        <div class="grid">
+                           <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 596 2"
+                              class="py-3 lg:py-6 order-2 lg:order-3 w-full"
+                           >
+                              <path
+                                 stroke="#12132D"
+                                 stroke-width="1"
+                                 stroke-dasharray="5 5"
+                                 stroke-opacity="0.3"
+                                 d="M0 .5h596"
+                              />
+                           </svg>
+
+                           <p class="lg:pr-6 order-3 lg:order-2">
+                              It's one thing to subject yourself to a Halloween
+                              costume mishap because, hey that's your
+                              prerogative.
+                           </p>
+
+                           <div
+                              class="mt-6 lg:mt-0 flex items-center justify-between order-4"
+                           >
+                              <ul
+                                 class="flex gap-x-6 items-center text-sm sm:text-base"
+                              >
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Message.svg"
+                                       alt="Message"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>560</span>
+                                 </li>
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Eye.svg"
+                                       alt="Eye"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>1,568</span>
+                                 </li>
+                                 <li
+                                    class="flex items-center gap-x-2 lg:gap-x-3"
+                                 >
+                                    <img
+                                       src="images/Clock.svg"
+                                       alt="Clock"
+                                       class="w-6 h-6"
+                                    />
+                                    <span>5 min</span>
+                                 </li>
+                              </ul>
+
+                              <button>
+                                 <img
+                                    src="images/Email.svg"
+                                    alt="Email"
+                                    class="w-6 h-6 lg:w-8 lg:h-8"
+                                 />
+                              </button>
+                           </div>
+                        </div>
+                     </main>
+                  </article>
+               </main>
+
+               <aside class="p-6 lg:col-span-4 bg-gray-100 rounded-3xl">
+                  <header class="flex items-center justify-between">
+                     <h1 class="font-bold text-xl">Title</h1>
+                     <div class="flex items-center gap-x-2">
+                        <img
+                           src="images/TickMark.svg"
+                           alt="TickMark"
+                           class="w-6 h-6"
+                        />
+                        <h4 class="text-gray-500">
+                           Mark as read (<span>0</span>)
+                        </h4>
+                     </div>
+                  </header>
+
+                  <ul class="mt-4 grid gap-y-4">
+                     <li
+                        class="p-4 flex items-center gap-x-2 bg-white rounded-2xl"
+                     >
+                        <h1 class="w-full font-semibold">
+                           10 Kids Unaware of Their Halloween Costume
+                        </h1>
+                        <img
+                           src="images/Eye.svg"
+                           alt="Eye"
+                           class="w-6 h-6 shrink-0"
+                        />
+                        <span class="text-gray-500">1,568</span>
+                     </li>
+                     <li
+                        class="p-4 flex items-center gap-x-2 bg-white rounded-2xl"
+                     >
+                        <h1 class="w-full font-semibold">
+                           10 Kids Unaware of Their Halloween Costume
+                        </h1>
+                        <img
+                           src="images/Eye.svg"
+                           alt="Eye"
+                           class="w-6 h-6 shrink-0"
+                        />
+                        <span class="text-gray-500">1,568</span>
+                     </li>
+                  </ul>
+               </aside>
+            </section>
          </section>
 
          <!-- Join Our Forum Section -->
@@ -236,7 +519,7 @@
             </div>
          </section>
 
-         <small class="text-neutral-500 text-xs sm:text-sm">
+         <small class="text-gray-500 text-xs sm:text-sm">
             2017, All Rights Reserved.
          </small>
       </footer>
