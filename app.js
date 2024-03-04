@@ -26,6 +26,7 @@ const fetchAllPosts = async () => {
 };
 
 const showAllPosts = (posts) => {
+   if (!posts) return;
    const postsHTML = posts.reduce(
       (posts, currentPost) => posts + createDiscussPostCard(currentPost),
       ""
@@ -179,6 +180,15 @@ const createLoadingSpin = () => {
 </div>`;
 };
 
+const showNoResultView = () => {
+   allPostsSection.innerHTML = `
+<div class="grid justify-items-center">
+   <img src="images/NoResult.png" alt="NoResult" class="w-full max-w-xs mx-auto" />
+   <h1 class="font-bold text-xl">No matching search results</h1>
+   <p class="mt-2 text-gray-500">Make sure all words are spelled correctly.</p>
+</div>`;
+};
+
 const markAsRead = (id) => {
    if (all_posts.length === 0) return;
    const matchedPost = all_posts.find((post) => post.id === id);
@@ -205,7 +215,7 @@ const searchByCategory = () => {
    const posts = all_posts.filter(
       (post) => post.category.toLowerCase() === category
    );
-   showAllPosts(posts);
+   posts.length > 0 ? showAllPosts(posts) : showNoResultView();
    discussSection.scrollIntoView({ behavior: "smooth" });
 };
 
