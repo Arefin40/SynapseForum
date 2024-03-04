@@ -16,13 +16,11 @@ let all_posts = [];
 let markAsReadCount = 0;
 
 const fetchAllPosts = async () => {
-   allPostsSection.innerHTML = createLoadingSpin();
    const response = await fetch(ALL_POST);
    if (!response.ok) return;
    const data = await response.json();
-   const posts = data.posts;
-   all_posts = posts;
-   return posts;
+   all_posts = data.posts;
+   showAllPosts(all_posts);
 };
 
 const showAllPosts = (posts) => {
@@ -35,7 +33,6 @@ const showAllPosts = (posts) => {
 };
 
 const fetchAndShowLatestPosts = async () => {
-   latestPostsSection.innerHTML = createLoadingSpin();
    const response = await fetch(LATEST_POST);
    if (!response.ok) return;
    const posts = await response.json();
@@ -61,13 +58,16 @@ const createDiscussPostCard = ({
    return `
 <article class="p-6 lg:p-10 grid bg-gray-100 rounded-3xl text-gray-500">
    <header class="grid grid-cols-[4rem_1fr] lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6">
-      <div class="w-full aspect-square border shrink-0 overflow-hidden rounded-2xl">
-         <img src=${image} class="w-full h-full" />
+      <div class="relative w-full aspect-square shrink-0">
+         <img src=${image} class="w-full h-full rounded-2xl" />
+         <div class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full ${
+            isActive ? "bg-success" : "bg-danger"
+         } border-2 border-white z-50"></div>
       </div>
 
       <div class="grid">
          <div
-            class="flex items-center gap-x-5 text-sm font-medium text-gray-600"
+            class="flex items-center gap-x-5 text-sm font-medium text-gray-600 flex-wrap"
          >
             <p># ${category}</p>
             <p>Author: ${author.name}</p>
@@ -96,7 +96,7 @@ const createDiscussPostCard = ({
          </p>
 
          <div
-            class="mt-6 lg:mt-0 flex items-center justify-between order-4"
+            class="mt-6 lg:mt-0 flex items-center justify-between order-4 flex-wrap gap-y-2"
          >
             <ul class="flex gap-x-6 items-center text-sm sm:text-base">
                <li class="flex items-center gap-x-2 lg:gap-x-3">
@@ -134,7 +134,7 @@ const createLatestPostCard = ({
    <article class="p-6 rounded-3xl border text-gray-500 max-w-96">
    <img src=${cover_image} class="h-48 w-full rounded-xl" />
 
-   <div class="pt-6 pb-3 flex items-center gap-x-2">
+   <div class="mt-6 mb-3 flex items-center gap-x-2">
       <img src="images/Calendar.svg" alt="Calendar" class="w-6 h-6" />
       <time>${posted_date ? posted_date : "No publish date"}</time>
    </div>
@@ -142,7 +142,7 @@ const createLatestPostCard = ({
    <h1 class="font-extrabold text-lg text-darkGray">
       ${title}
    </h1>
-   <p class="pt-3 pb-4">
+   <p class="mt-3 mb-4">
       ${description}
    </p>
 
@@ -189,6 +189,64 @@ const showNoResultView = () => {
 </div>`;
 };
 
+const showAllPostLoadingSkeleton = () => {
+   allPostsSection.innerHTML = `
+<article class="animate-pulse p-6 lg:p-10 grid bg-gray-100 rounded-3xl">
+   <header class="grid grid-cols-[4rem_1fr] lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6"   >
+      <div class="w-full aspect-square shrink-0">
+         <div class="w-full h-full rounded-2xl bg-gray-300"></div>
+      </div>
+
+      <div class="grid items-center">
+         <div class="w-full max-w-56 h-5 bg-gray-300 rounded"></div>
+         <div class="w-full max-w-md h-8 mt-1 rounded bg-gray-300"></div>
+      </div>
+   </header>
+
+   <main class="grid lg:grid-cols-[4.5rem_1fr] gap-x-3 lg:gap-x-6">
+      <span></span>
+
+      <div class="grid">
+         <div class="my-3 lg:my-6 order-2 lg:order-3 w-full border border-gray-300"></div>
+         <div class="lg:mt-2 h-16 w-full lg:mx lg:pr-6 order-3 lg:order-2 bg-gray-300 rounded"></div>
+         <div class="mt-6 lg:mt-0 flex justify-between order-4 flex-wrap gap-y-2 shrink-0">
+            <ul class="flex gap-x-3 lg:gap-x-6">
+               <div class="min-w-20 lg:min-w-32 w-full h-6 lg:h-8 bg-gray-300 rounded"></div>
+               <div class="min-w-20 lg:min-w-32 w-full h-6 lg:h-8 bg-gray-300 rounded"></div>
+               <div class="min-w-20 lg:min-w-32 w-full h-6 lg:h-8 bg-gray-300 rounded"></div>
+            </ul>
+            
+            <div class="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-gray-300"></div>
+         </div>
+      </div>
+   </main>
+</article>`;
+};
+
+const showLatesPostLoadingSkeleton = () => {
+   const skeleton = `
+<article class="animate-pulse grid p-6 w-full rounded-3xl border text-gray-500 max-w-96">
+   <div class="h-48 w-full rounded-xl bg-gray-300"></div>
+
+   <div class="mt-6 mb-3 flex items-center gap-x-2">
+      <div class="w-6 h-6 bg-gray-300 rounded"></div>
+      <div class="h-6 w-1/2 bg-gray-300 rounded"></div>
+   </div>
+
+   <div class="h-8 bg-gray-300 rounded"></div>
+   <div class="h-16 mt-3 mb-4 bg-gray-300 rounded"></div>
+
+   <div class="flex items-center gap-x-4">
+      <div class="w-12 h-12 shrink-0 bg-gray-300 rounded-full" ></div>
+      <div class="grid gap-y-1 w-full">
+         <div class="h-8 w-full bg-gray-300 rounded"></div>
+         <div class="h-7 max-w-48 bg-gray-300 rounded"></div>
+      </div>
+   </div>
+</article>`;
+   latestPostsSection.innerHTML = skeleton.repeat(3);
+};
+
 const markAsRead = (id) => {
    if (all_posts.length === 0) return;
    const matchedPost = all_posts.find((post) => post.id === id);
@@ -210,17 +268,21 @@ const markAsRead = (id) => {
 };
 
 const searchByCategory = () => {
+   showAllPostLoadingSkeleton();
    const category = search.value.trim().toLowerCase();
    if (category === "") return;
    const posts = all_posts.filter(
       (post) => post.category.toLowerCase() === category
    );
-   posts.length > 0 ? showAllPosts(posts) : showNoResultView();
    discussSection.scrollIntoView({ behavior: "smooth" });
+   setTimeout(() => {
+      posts.length > 0 ? showAllPosts(posts) : showNoResultView();
+   }, 2000);
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-   const posts = await fetchAllPosts();
-   showAllPosts(posts);
+   showAllPostLoadingSkeleton();
+   showLatesPostLoadingSkeleton();
+   await fetchAllPosts();
    await fetchAndShowLatestPosts();
 });
