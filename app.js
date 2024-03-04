@@ -4,10 +4,12 @@ const LATEST_POST =
    "https://openapi.programming-hero.com/api/retro-forum/latest-posts";
 
 // DOM References
+const discussSection = document.getElementById("discuss-section");
 const allPostsSection = document.getElementById("all-posts-section");
 const latestPostsSection = document.getElementById("latest-posts-section");
 const markedReadLists = document.getElementById("marked-read-lists");
 const markedReadCounter = document.getElementById("marked-read-counter");
+const search = document.getElementById("search");
 
 // Global variables
 let all_posts = [];
@@ -20,7 +22,10 @@ const fetchAllPosts = async () => {
    const data = await response.json();
    const posts = data.posts;
    all_posts = posts;
+   return posts;
+};
 
+const showAllPosts = (posts) => {
    const postsHTML = posts.reduce(
       (posts, currentPost) => posts + createDiscussPostCard(currentPost),
       ""
@@ -28,13 +33,11 @@ const fetchAllPosts = async () => {
    allPostsSection.innerHTML = postsHTML;
 };
 
-const fetchLatestPosts = async () => {
+const fetchAndShowLatestPosts = async () => {
    latestPostsSection.innerHTML = createLoadingSpin();
    const response = await fetch(LATEST_POST);
    if (!response.ok) return;
    const posts = await response.json();
-   console.log(posts);
-
    const postsHTML = posts.reduce(
       (posts, currentPost) => posts + createLatestPostCard(currentPost),
       ""
@@ -66,7 +69,7 @@ const createDiscussPostCard = ({
             class="flex items-center gap-x-5 text-sm font-medium text-gray-600"
          >
             <p># ${category}</p>
-            <p>Author: ${author}</p>
+            <p>Author: ${author.name}</p>
          </div>
          <h2 class="mt-1 font-bold lg:text-xl text-darkGray">
             ${title}
@@ -196,7 +199,18 @@ const markAsRead = (id) => {
    markedReadCounter.textContent = markAsReadCount;
 };
 
+const searchByCategory = () => {
+   const category = search.value.trim().toLowerCase();
+   if (category === "") return;
+   const posts = all_posts.filter(
+      (post) => post.category.toLowerCase() === category
+   );
+   showAllPosts(posts);
+   discussSection.scrollIntoView({ behavior: "smooth" });
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
    const posts = await fetchAllPosts();
-   const latestPosts = await fetchLatestPosts();
+   showAllPosts(posts);
+   await fetchAndShowLatestPosts();
 });
