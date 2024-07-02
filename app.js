@@ -268,12 +268,12 @@ const markAsRead = (id) => {
 };
 
 const searchByCategory = () => {
-   showAllPostLoadingSkeleton();
    const category = search.value.trim().toLowerCase();
    if (category === "") return;
    const posts = all_posts.filter(
       (post) => post.category.toLowerCase() === category
    );
+   showAllPostLoadingSkeleton();
    discussSection.scrollIntoView({ behavior: "smooth" });
    setTimeout(() => {
       posts.length > 0 ? showAllPosts(posts) : showNoResultView();

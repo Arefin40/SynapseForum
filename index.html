@@ -175,8 +175,11 @@
                </p>
             </div>
 
-            <section class="grid gap-6 lg:grid-cols-12">
-               <main id="all-posts-section" class="lg:col-span-8 grid gap-y-6">
+            <section class="grid gap-6 lg:grid-cols-12 items-start">
+               <main
+                  id="all-posts-section"
+                  class="lg:col-span-8 grid gap-y-6 content-start"
+               >
                   <article
                      class="animate-pulse p-6 lg:p-10 grid bg-gray-100 rounded-3xl"
                   >
@@ -237,7 +240,9 @@
                   </article>
                </main>
 
-               <aside class="p-6 lg:col-span-4 bg-gray-100 rounded-3xl">
+               <aside
+                  class="p-6 min-h-40 lg:min-h-80 lg:col-span-4 bg-gray-100 rounded-3xl"
+               >
                   <header class="flex items-center justify-between">
                      <h1 class="font-bold text-xl">Title</h1>
                      <div class="flex items-center gap-x-2">
@@ -300,11 +305,7 @@
             <main
                id="latest-posts-section"
                class="flex gap-6 flex-wrap justify-center"
-            >
-               <!-- <span class="text-center">
-                  [ all latest posts will be listed there ]
-               </span> -->
-            </main>
+            ></main>
          </section>
       </main>
 
